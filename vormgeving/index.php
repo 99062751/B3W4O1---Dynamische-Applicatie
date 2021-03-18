@@ -1,3 +1,17 @@
+<?php
+include_once 'connection_database.php';
+$stmt = $conn->prepare("SELECT * FROM characters");
+$stmt->execute();
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//print_r($result);
+if(isset($_GET["page"])){
+	$index= ($_GET["page"] - 1);	
+} else {
+	$index= 0;	
+}
+$value= $result[$index];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,11 +21,11 @@
     <link href="resources/css/style.css" rel="stylesheet"/>
 </head>
 <body>
-<header><h1>Alle [X] characters uit de database</h1>
+<header><h1>Alle [<?php ?>] characters uit de database</h1>
 
 </header>
 <div id="container">
-    <a class="item" href="character.html">
+    <a class="item" href="character.php">
         <div class="left">
             <img class="avatar" src="resources/images/bowser.jpg">
         </div>
@@ -31,3 +45,5 @@
 <footer>&copy; [jenaam] 2020</footer>
 </body>
 </html>
+
+

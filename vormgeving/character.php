@@ -1,3 +1,8 @@
+<?php
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +13,7 @@
 </head>
 <body>
 <header><h1>Bowser</h1>
-    <a class="backbutton" href="index.html"><i class="fas fa-long-arrow-alt-left"></i> Terug</a></header>
+    <a class="backbutton" href="index.php"><i class="fas fa-long-arrow-alt-left"></i> Terug</a></header>
 <div id="container">
     <div class="detail">
         <div class="left">
