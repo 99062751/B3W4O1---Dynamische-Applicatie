@@ -21,26 +21,46 @@ $value= $result[$index];
     <link href="resources/css/style.css" rel="stylesheet"/>
 </head>
 <body>
-<header><h1>Alle [<?php ?>] characters uit de database</h1>
+<header>
+<?php
+    foreach ($result as $array) {
+        '<a href="index.php?page='.$array["id"]. $i++.'">'.$array["name"].'</a>';
+        $i= count($array);
+    } 
+?>
+
+
+
+<h1>Alle [<?php echo $i ?>] characters uit de database
+
+</h1>
 
 </header>
 <div id="container">
-    <a class="item" href="character.php">
-        <div class="left">
-            <img class="avatar" src="resources/images/bowser.jpg">
-        </div>
-        <div class="right">
-            <h2>Bowser</h2>
-            <div class="stats">
-                <ul class="fa-ul">
-                    <li><span class="fa-li"><i class="fas fa-heart"></i></span> 10000</li>
-                    <li><span class="fa-li"><i class="fas fa-fist-raised"></i></span> 400</li>
-                    <li><span class="fa-li"><i class="fas fa-shield-alt"></i></span> 100</li>
-                </ul>
-            </div>
-        </div>
-        <div class="detailButton"><i class="fas fa-search"></i> bekijk</div>
-    </a>
+    <?php
+    $stmt_img = $conn->prepare("SELECT avatar FROM characters");
+    $stmt_img->execute();
+
+
+        for($b= 0; $b < count($array); $b++){
+            echo ('<a class="item" href="character.php">
+                <div class="left">
+                    <img class="avatar" src="resources/images/bowser.jpg">
+                </div>
+                <div class="right">
+                    <h2>Bowser</h2>
+                    <div class="stats">
+                        <ul class="fa-ul">
+                            <li><span class="fa-li"><i class="fas fa-heart"></i></span> 10000</li>
+                            <li><span class="fa-li"><i class="fas fa-fist-raised"></i></span> 400</li>
+                            <li><span class="fa-li"><i class="fas fa-shield-alt"></i></span> 100</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="detailButton"><i class="fas fa-search"></i> bekijk</div>
+            </a>');
+        }
+        ?>
 </div>
 <footer>&copy; [jenaam] 2020</footer>
 </body>
