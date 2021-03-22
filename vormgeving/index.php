@@ -1,15 +1,5 @@
 <?php
 include_once 'connection_database.php';
-$stmt = $conn->prepare("SELECT * FROM characters");
-$stmt->execute();
-$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//print_r($result);
-if(isset($_GET["page"])){
-	$index= ($_GET["page"] - 1);	
-} else {
-	$index= 0;	
-}
-$value= $result[$index];
 ?>
 
 <!DOCTYPE html>
@@ -22,47 +12,32 @@ $value= $result[$index];
 </head>
 <body>
 <header>
-<?php
-    foreach ($result as $array) {
-        '<a href="index.php?page='.$array["id"]. $i++.'">'.$array["name"].'</a>';
-        $i= count($array);
-    } 
-?>
-
-
-
-<h1>Alle [<?php echo $i ?>] characters uit de database
-
-</h1>
-
+<h1>Alle <?php echo $result2["number"]; ?> characters uit de database</h1>
 </header>
 <div id="container">
     <?php
-    $stmt_img = $conn->prepare("SELECT avatar FROM characters");
-    $stmt_img->execute();
 
-
-        for($b= 0; $b < count($array); $b++){
-            echo ('<a class="item" href="character.php">
+        foreach ($result as $array => $name) {
+            echo '<a class="item" href="character.php?id='.$name["id"].'">
                 <div class="left">
-                    <img class="avatar" src="resources/images/bowser.jpg">
+                    <img class="avatar" src="resources/images/'.$name["avatar"].'">
                 </div>
                 <div class="right">
-                    <h2>Bowser</h2>
+                    <h2>'.$name["name"].'</h2>
                     <div class="stats">
                         <ul class="fa-ul">
-                            <li><span class="fa-li"><i class="fas fa-heart"></i></span> 10000</li>
-                            <li><span class="fa-li"><i class="fas fa-fist-raised"></i></span> 400</li>
-                            <li><span class="fa-li"><i class="fas fa-shield-alt"></i></span> 100</li>
+                            <li><span class="fa-li"><i class="fas fa-heart"></i></span>'.$name["health"].'</li>
+                            <li><span class="fa-li"><i class="fas fa-fist-raised"></i></span> '.$name["attack"].'</li>
+                            <li><span class="fa-li"><i class="fas fa-shield-alt"></i></span> '.$name["defense"].'</li>
                         </ul>
                     </div>
                 </div>
                 <div class="detailButton"><i class="fas fa-search"></i> bekijk</div>
-            </a>');
+            </a>';
         }
         ?>
 </div>
-<footer>&copy; [jenaam] 2020</footer>
+<footer>&copy; [Sumant Jakhari] 2021</footer>
 </body>
 </html>
 
