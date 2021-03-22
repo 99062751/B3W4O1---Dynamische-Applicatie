@@ -16,16 +16,16 @@ include_once 'connection_database.php';
 <div id="container">
     <div class="detail">
         <div class="left">
-            <img class="avatar" src="resources/images/bowser.jpg">
-            <div class="stats" style="background-color: yellowgreen">
+            <img class="avatar" src="resources/images/<?php echo $result3["avatar"];?>">
+            <div class="stats" style="background-color: <?php echo $result3["color"];?>">
                 <ul class="fa-ul">
                     <li><span class="fa-li"><i class="fas fa-heart"></i></span><?php echo $result3["health"];?></li>
-                    <li><span class="fa-li"><i class="fas fa-fist-raised"></i></span><?php echo $result3["health"];?></li>
-                    <li><span class="fa-li"><i class="fas fa-shield-alt"></i></span><?php echo $result3["health"];?></li>
+                    <li><span class="fa-li"><i class="fas fa-fist-raised"></i></span><?php echo $result3["attack"];?></li>
+                    <li><span class="fa-li"><i class="fas fa-shield-alt"></i></span><?php echo $result3["defense"];?></li>
                 </ul>
                 <ul class="gear">
-                    <li><b>Weapon</b>: <?php echo $id[`weapon`]; ?></li>
-                    <li><b>Armor</b>: <?php  echo $id[`armor`];?></li>
+                    <li><b>Weapon</b>: <?php echo $result3["weapon"]; ?></li>
+                    <li><b>Armor</b>: <?php  echo $result3["armor"];?></li>
                 </ul>
             </div>
         </div>
@@ -38,6 +38,6 @@ include_once 'connection_database.php';
         <div style="clear: both"></div>
     </div>
 </div>
-<footer>&copy; [jenaam] 2020</footer>
+<footer>&copy; [Sumant Jakhari] 2021</footer>
 </body>
 </html>
