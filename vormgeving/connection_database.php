@@ -44,13 +44,10 @@
     function Connect_iD_toBase(){
         global $result3;
         $conn= connect();
-        
         $id= $_GET["id"];
-
         $stmt = $conn->prepare("SELECT * FROM characters WHERE id=?");
         $stmt->execute([$id]);
         $result3 = $stmt->fetch(PDO::FETCH_ASSOC);
-
         $conn = null;
     }
     
