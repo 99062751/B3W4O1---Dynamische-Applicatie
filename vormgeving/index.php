@@ -16,11 +16,10 @@ include_once 'connection_database.php';
 </header>
 <div id="container">
     <?php
-
         foreach ($result as $array => $name) {
             echo '<a class="item" href="character.php?id='.$name["id"].'">
                 <div class="left">
-                    <img class="avatar" src="resources/images/'.$name["avatar"].'">
+                    <img class="avatar" src="resources/images/'.$name["avatar"].'"'; if($name["avatar"] == "captianamerica.jpg"){echo ' style="transform: rotate(270deg)"';} echo '>
                 </div>
                 <div class="right">
                     <h2>'.$name["name"].'</h2>
@@ -35,7 +34,7 @@ include_once 'connection_database.php';
                 <div class="detailButton"><i class="fas fa-search"></i> bekijk</div>
             </a>';
         }
-        ?>
+    ?>
 </div>
 <footer>&copy; [Sumant Jakhari] 2021</footer>
 </body>

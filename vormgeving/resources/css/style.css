@@ -73,6 +73,7 @@ h1 {
 .detail {
     position: relative;
 }
+
 header .backbutton {
     position: absolute;
     top: 15px;
@@ -105,4 +106,14 @@ header .backbutton {
 footer {
     margin-top: 10px;
     text-align: center;
+}
+
+.detailButton{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;    
+}
+
+.item{
+    position: relative;
 }

@@ -16,7 +16,7 @@ include_once 'connection_database.php';
 <div id="container">
     <div class="detail">
         <div class="left">
-            <img class="avatar" src="resources/images/<?php echo $result3["avatar"];?>">
+            <img class="avatar" src="resources/images/<?php echo $result3["avatar"]; if($result3["avatar"] == "captianamerica.jpg"){echo '" style="transform: rotate(270deg);';} ?>">
             <div class="stats" style="background-color: <?php echo $result3["color"];?>">
                 <ul class="fa-ul">
                     <li><span class="fa-li"><i class="fas fa-heart"></i></span><?php echo $result3["health"];?></li>
@@ -24,8 +24,14 @@ include_once 'connection_database.php';
                     <li><span class="fa-li"><i class="fas fa-shield-alt"></i></span><?php echo $result3["defense"];?></li>
                 </ul>
                 <ul class="gear">
-                    <li><b>Weapon</b>: <?php echo $result3["weapon"]; ?></li>
-                    <li><b>Armor</b>: <?php  echo $result3["armor"];?></li>
+                    <?php
+                    if($result3["weapon"] != null){
+                        echo '<li><b>Weapon</b>: '. $result3["weapon"]. '</li>';
+                    }
+                    if($result3["armor"] != null){
+                        echo '<li><b>Armor</b>: '. $result3["armor"]. '</li>';
+                    }
+                    ?>
                 </ul>
             </div>
         </div>
